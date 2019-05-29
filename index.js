@@ -27,3 +27,4 @@ client.on('message', msg {
         const embed = new Discord.RichEmbed().setTitle('Megumin').setDescription('Displaying help text for Megumin').addField('safe', 'Searches on Safebooru').addField('r34', 'UwU')
     }
 })
+client.login(process.env.token)
