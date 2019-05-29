@@ -2,7 +2,7 @@ const discord = require('discord')
 const client = new Discord.Client()
 const booru = require('booru')
 
-client.on('ready' () => {
+client.on('ready',() {
     console.log(`Logged in as ${client.user.tag}`)
     client.user.setActivity('your mom | m.')
 })
