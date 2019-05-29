@@ -54,6 +54,7 @@ client.on('message', msg => {
 		const slap = values[parseInt(Math.random() * values.length)]
 		var user = msg.mentions.users.first()
 		const embed = new Discord.RichEmbed().setTitle(`<@${msg.author.id}> slapped <@${user.id}> \:O`).setImage(slap)
+		msg.channel.send(embed)
 		}
 })
 client.login(process.env.token)
