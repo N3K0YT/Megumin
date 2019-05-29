@@ -1,0 +1,15 @@
+{
+  "name": "megumin",
+  "version": "1.0.0",
+  "description": "A Discord bot",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^11.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test.js"
+  },
+  "author": "Aqua_",
+  "license": "ISC"
+}
