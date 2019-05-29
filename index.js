@@ -24,8 +24,8 @@ client.on('message', msg => {
 			for (let post of posts){
 				const embed = new Discord.RichEmbed().setTitle('Results on Rule 34').setImage(post.fileUrl).setFooter('Megumin by Aqua_'
 )
-}
 )}
+}
 })
 client.on('message', msg => {
     if (msg.content.startsWith("m.safe ")) {
