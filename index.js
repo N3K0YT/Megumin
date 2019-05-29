@@ -20,7 +20,7 @@ client.on('message', msg => {
 client.on('message', msg => {
 	if (msg.content.startsWith('m.r34 ')){
 		var query = msg.content.substr('m.r34 '.length)
-		booru.get('r34', query.toLowerCase, {limit: 4, random: true}).then(posts => {
+		booru.search('r34', query.toLowerCase, {limit: 4, random: true}).then(posts => {
 			for (let post of posts){
 				const embed = new Discord.RichEmbed().setTitle('Results on Rule 34').setImage(post.fileUrl).setFooter('Megumin by Aqua_')
 }
@@ -30,7 +30,7 @@ client.on('message', msg => {
 client.on('message', msg => {
     if (msg.content.startsWith("m.safe ")) {
         var query = msg.content.substr('m.safe '.length)
-        booru.get('sb', query.toLowerCase, { limit: 4, random: true }).then(posts => {
+        booru.search('sb', query.toLowerCase, { limit: 4, random: true }).then(posts => {
 			for (let post of posts){
 				const embed = new Discord.RichEmbed().setTitle(`Results for **${query}** on Safebooru`).setImage(post.fileUrl).setFooter('Megumin by Aqua_')
 			}
