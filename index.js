@@ -52,7 +52,7 @@ client.on('message', msg => {
 		var num = Math.floor(Math.random() * 5);
 		var slaparr = JSON.parse(slaps)
 		var user = msg.mentions.users.first()
-		cont embed = new Discord.RichEmbed().setTitle(`<@${msg.author.id}> slapped <@${user.id}>\!💥💢`).setImage(slaparr[num])
+		cont embed = new Discord.RichEmbed().setTitle(`<@${msg.author.id}> slapped <@${user.id}> \:O`).setImage(slaparr[num])
 		}
 })
 client.login(process.env.token)
