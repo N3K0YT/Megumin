@@ -8,7 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test.js"
+    "test": "test.js",
+    "start": "index.js"
   },
   "author": "Aqua_",
   "license": "ISC"
