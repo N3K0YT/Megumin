@@ -1,4 +1,4 @@
-const discord = require('discord')
+const discord = require('discord.js')
 const client = new Discord.Client()
 const booru = require('booru')
 /*							TODO
