@@ -43,8 +43,9 @@ client.on('message', msg => {
     }
 })
 client.on('message', msg => {
-	if (msg.content.startsWith('m.slap')
+	if (msg.content.startsWith('m.slap')){
 		var user = msg.mentions.users.first()
 		msg.channel.send(`${msg.author.tag} slapped ${user.tag}!💥💢`)
+		}
 })
 client.login(process.env.token)
