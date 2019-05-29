@@ -18,7 +18,7 @@ client.on('message', msg => {
 	}
 })
 client.on('message', msg => {
-	if (msg.content.startsWith('m.r34 '){
+	if (msg.content.startsWith('m.r34 ')){
 		var query = msg.content.subst('m.r34 '.length)
 		booru.get('r34', query.toLowerCase, {limit: 4, random: true}).then(posts => {
 			for (let post of posts){
