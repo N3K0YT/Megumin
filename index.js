@@ -8,9 +8,9 @@ const booru = require('booru')
 -Change slap to embeds with gifs
 ...
 */
-client.on('ready', () {
-	console.log(`Logged in as ${client.user.tag}`)
-    client.user.setActivity('your mom | m.')
+client.on('ready', () => {
+    client.user.setActivity('your mom | m. ')
+    console.log(`Logged in as: ${client.user.tag}!`)
 })
 client.on('message', msg {
 	if(msg.content === 'm.ping'){

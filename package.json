@@ -4,11 +4,13 @@
   "description": "A Discord bot",
   "main": "bot.js",
   "dependencies": {
-    "discord.js": "^11.5.0"
+    "discord.js": "^11.5.0",
+    "booru": "^2.0.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test.js"
+    "test": "test.js",
+    "start": "index.js"
   },
   "author": "Aqua_",
   "license": "ISC"
