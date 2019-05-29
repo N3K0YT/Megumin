@@ -14,7 +14,7 @@ client.on('ready', () => {
 })
 client.on('message', msg => {
 	if(msg.content === 'm.ping'){
-		msg.channel.send(`Pong! ${client.user.ping}`)
+		msg.channel.send(`Pong! ${client.ping}`)
 	}
 })
 client.on('message', msg => {
@@ -49,7 +49,7 @@ client.on('message', msg => {
 client.on('message', msg => {
 	if (msg.content.startsWith('m.slap')){
 		var user = msg.mentions.users.first()
-		msg.channel.send(`${msg.author.tag} slapped ${user.tag}!💥💢`)
+		msg.channel.send(`<@${msg.author.id}> slapped <@${user.id}>!💥💢`)
 		}
 })
 client.login(process.env.token)
