@@ -38,7 +38,7 @@ client.on('message', msg => {
 		}).catch(err => {
 			console.log(err)
 			msg.channel.send('Error')
-}
+})
     }
 })
 client.on('message', msg => {
