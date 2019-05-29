@@ -27,7 +27,7 @@ client.on('message', msg => {
 }
 })
 client.on('message', msg => {
-    if (msg.content.startsWith("m.safe ")) {
+    if (msg.content === "m.safe ") {
         var query = msg.content.substr('m.safe'.length)
         booru.get('sb', query.toLowerCase, { limit: 4, random: true }).then(posts => {
 			for (let post of posts){
