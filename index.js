@@ -50,8 +50,9 @@ client.on('message', msg => {
 client.on('message', msg => {
 	if (msg.content.startsWith('m.slap')){
 		var num = Math.floor(Math.random() * 5);
+		var slaparr = JSON.parse(slaps)
 		var user = msg.mentions.users.first()
-		cont embed = new Discord.RichEmbed().setTitle(`<@${msg.author.id}> slapped <@${user.id}>!💥💢`).setImage(slaps.num)
+		cont embed = new Discord.RichEmbed().setTitle(`<@${msg.author.id}> slapped <@${user.id}>!💥💢`).setImage(slaparr[num])
 		}
 })
 client.login(process.env.token)
