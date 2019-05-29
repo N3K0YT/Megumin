@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const booru = require('booru')
+const slaps = require('./assets/slaps.json')
 /*							TODO
 -Add XP system (not important)
 -Add Profile (not important)
@@ -48,8 +49,9 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content.startsWith('m.slap')){
+		var num = Math.floor(Math.random() * 5);
 		var user = msg.mentions.users.first()
-		msg.channel.send(`<@${msg.author.id}> slapped <@${user.id}>!💥💢`)
+		cont embed = new Discord.RichEmbed().setTitle(`<@${msg.author.id}> slapped <@${user.id}>!💥💢`).setImage(slaps.num)
 		}
 })
 client.login(process.env.token)
