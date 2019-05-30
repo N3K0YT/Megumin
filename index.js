@@ -12,6 +12,10 @@ const slaps = require('./assets/slaps.json')
 client.on('ready', () => {
     client.user.setActivity('your mom | m. ')
     console.log(`Logged in as: ${client.user.tag}!`)
+    const nani1 = client.emojis.find(emoji => emoji.name === "nani1");
+    const nani2 = client.emojis.find(emoji => emoji.name === "nani2");
+    console.log(nani1)
+    console.log(nani2)
 })
 client.on('message', msg => {
 	if(msg.content === 'm.ping'){
@@ -53,7 +57,7 @@ client.on('message', msg => {
 		const values = Object.values(slaps)
 		const slap = values[parseInt(Math.random() * values.length)]
 		var user = msg.mentions.users.first()
-		const embed = new Discord.RichEmbed().setDescription(`<@${msg.author.mention}> slapped <@${user.mention}>!????`).setImage(slap)
+		const embed = new Discord.RichEmbed().setDescription(`<@${msg.author.id}> slapped <@${user.id}>! `).setImage(slap)
 		msg.channel.send(embed)
 		}
 })
