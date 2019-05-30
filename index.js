@@ -114,7 +114,7 @@ client.on('message', msg => {
 		}
 })
 client.on('message', msg => {
-	if(msg.content.startsWith('m.ban ')
+	if(msg.content.startsWith('m.ban '){
 	var user = msg.mentions.users.first
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
@@ -144,7 +144,9 @@ client.on('message', msg => {
     
         let logs = msg.guild.channels.find(c => c.name === "logs")
         logs.send(embed)
+        }
 })
+/*
 client.on('message', msg => {
 	if(msg.content.startsWith('m.ban ')
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
@@ -176,5 +178,6 @@ client.on('message', msg => {
         let logs = msg.guild.channels.find(c => c.name === "logs")
         logs.send(embed)
 })
+*/
 
 client.login(process.env.token)
