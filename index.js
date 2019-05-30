@@ -127,7 +127,7 @@ client.on('message', msg => {
     msg.delete()
     try {
         //msg.guild.ban(bannedMember, {reason: reason})
-        msg.channel.send(`${bannedMember.tag} has been banned from the guild!`)
+        msg.channel.send(`${usr.tag} has been banned from the guild!`)
     } catch(e) {
         console.log(e.message)
     }
