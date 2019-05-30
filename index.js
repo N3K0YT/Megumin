@@ -118,7 +118,7 @@ client.on('message', msg => {
 	var user = msg.mentions.users.first
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
-    let bannedMember = bot.fetchUser(user)
+    let bannedMember = client.fetchUser(user)
         if(!bannedMember) return msg.channel.send("Please provide a user to ban!")
 
     let reason = args.slice(1).join(" ")
