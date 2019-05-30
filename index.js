@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const booru = require('booru')
 const slaps = require('./assets/slaps.json')
+const colors = require('./assets/colors.json')
 /*							TODO
 -Add XP system (not important)
 -Add Profile (not important)
@@ -10,7 +11,7 @@ const slaps = require('./assets/slaps.json')
 ...
 */
 client.on('ready', () => {
-    client.user.setActivity('your mom | m. ')
+    client.user.setActivity('casting explosive magic | m. ')
     console.log(`Logged in as: ${client.user.tag}!`)
    
 })
@@ -50,7 +51,6 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content.startsWith('m.slap')){
-		var num = Math.floor(Math.random() * 5);
 		const values = Object.values(slaps)
 		const slap = values[parseInt(Math.random() * values.length)]
 		const nani = client.emojis.get("583450493745889285")
