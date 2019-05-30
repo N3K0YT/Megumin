@@ -120,7 +120,6 @@ client.on('message', msg => {
 	var usr = msg.mentions.users.first()
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
-    let bannedMember = client.fetchUser(usr.id)
         if(!usr) return msg.channel.send("Please provide a user to ban!")
 
     if(!msg.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
@@ -145,38 +144,130 @@ client.on('message', msg => {
         logs.send(embed)
         }
 })
-/*
 client.on('message', msg => {
-	if(msg.content.startsWith('m.ban ')
+	if(msg.content.startsWith('m.kick  ')){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+	var usr = msg.mentions.users.first()
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
-
-    let bannedMember = await bot.fetchUser(args[0])
-        if(!bannedMember) return msg.channel.send("Please provide a user ban!")
-
-    let reason = args.slice(1).join(" ")
-        if(!reason) reason = "No reason given!"
+        if(!usr) return msg.channel.send("Please provide a user to kick!")
 
     if(!msg.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
-        msg.guild.unban(bannedMember, {reason: reason})
-        msg.channel.send(`${bannedMember.tag} has been unbanned from the guild!`)
+        msg.guild.kick(usr.id)
+        msg.channel.send(`${usr.tag} has been kicked from the guild!`)
     } catch(e) {
         console.log(e.message)
     }
+    
 
     let embed = new Discord.RichEmbed()
-    .setColor(colours.red_light)
+    .setColor(color)
     .setAuthor(`${msg.guild.name} Modlogs`, msg.guild.iconURL)
     .addField("Moderation:", "kick")
-    .addField("Moderated on:", `${kickedMember.username} (${kickedMember.id})`)
+    .addField("Victim:", `${usr.username} (${usr.id})`)
     .addField("Moderator:", msg.author.username)
-    .addField("Reason:", reason)
     .addField("Date:", msg.createdAt.toLocaleString())
     
         let logs = msg.guild.channels.find(c => c.name === "logs")
         logs.send(embed)
+        }
 })
-*/
+client.on('message', msg => {
+	if(msg.content.startsWith('m.unban ')){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+	var usr = msg.mentions.users.first()
+	    if(!msg.member.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
+
+        if(!usr) return msg.channel.send("Please provide a user to unban!")
+
+    if(!msg.guild.me.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
+    msg.delete()
+    try {
+        msg.guild.unban(usr.id)
+        msg.channel.send(`${usr.tag} has been unbanned!`)
+    } catch(e) {
+        console.log(e.message)
+    }
+    
+
+    let embed = new Discord.RichEmbed()
+    .setColor(color)
+    .setAuthor(`${msg.guild.name} Modlogs`, msg.guild.iconURL)
+    .addField("Moderation:", "unban")
+    .addField("Victim:", `${usr.username} (${usr.id})`)
+    .addField("Moderator:", msg.author.username)
+    .addField("Date:", msg.createdAt.toLocaleString())
+    
+        let logs = msg.guild.channels.find(c => c.name === "logs")
+        logs.send(embed)
+        }
+})
+client.on('message', msg => {
+	if(msg.content.startsWith('m.mute ')){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+	var usr = msg.mentions.users.first()
+	    if(!msg.member.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
+
+    let bannedMember = client.fetchUser(usr.id)
+        if(!usr) return msg.channel.send("Please provide a user to mute!")
+
+    if(!msg.guild.me.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
+    msg.delete()
+    try {
+    	usr.addRole("muted")
+        msg.channel.send(`${usr.tag} has been muted xD`)
+    } catch(e) {
+        console.log(e.message)
+    }
+    
+
+    let embed = new Discord.RichEmbed()
+    .setColor(color)
+    .setAuthor(`${msg.guild.name} Modlogs`, msg.guild.iconURL)
+    .addField("Moderation:", "mute")
+    .addField("Victim:", `${usr.username} (${usr.id})`)
+    .addField("Moderator:", msg.author.username)
+    .addField("Date:", msg.createdAt.toLocaleString())
+    
+        let logs = msg.guild.channels.find(c => c.name === "logs")
+        logs.send(embed)
+        }
+})
+client.on('message', msg => {
+	if(msg.content.startsWith('m.unmute ')){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+	var usr = msg.mentions.users.first()
+	    if(!msg.member.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
+
+    let bannedMember = client.fetchUser(usr.id)
+        if(!usr) return msg.channel.send("Please provide a user to unmute!")
+
+    if(!msg.guild.me.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
+    msg.delete()
+    try {
+        usr.removeRole('muted')
+        msg.channel.send(`${usr.tag} has been unmuted from the guild!`)
+    } catch(e) {
+        console.log(e.message)
+    }
+    
+
+    let embed = new Discord.RichEmbed()
+    .setColor(color)
+    .setAuthor(`${msg.guild.name} Modlogs`, msg.guild.iconURL)
+    .addField("Moderation:", "unmute")
+    .addField("Victim:", `${usr.username} (${usr.id})`)
+    .addField("Moderator:", msg.author.username)
+    .addField("Date:", msg.createdAt.toLocaleString())
+    
+        let logs = msg.guild.channels.find(c => c.name === "logs")
+        logs.send(embed)
+        }
+})
 
 client.login(process.env.token)
