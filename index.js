@@ -12,7 +12,6 @@ const slaps = require('./assets/slaps.json')
 client.on('ready', () => {
     client.user.setActivity('your mom | m. ')
     console.log(`Logged in as: ${client.user.tag}!`)
-    const nani = client.emojis.get("583450493745889285")
    
 })
 client.on('message', msg => {
@@ -54,6 +53,7 @@ client.on('message', msg => {
 		var num = Math.floor(Math.random() * 5);
 		const values = Object.values(slaps)
 		const slap = values[parseInt(Math.random() * values.length)]
+		const nani = client.emojis.get("583450493745889285")
 		var user = msg.mentions.users.first()
 		const embed = new Discord.RichEmbed().setDescription(`<@${msg.author.id}> slapped <@${user.id}>! ${nani.toString()} `).setImage(slap)
 		msg.channel.send(embed)
