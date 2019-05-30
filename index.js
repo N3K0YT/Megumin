@@ -13,7 +13,7 @@ const dl = require('discord-leveling')
 ...
 */
 client.on('ready', () => {
-    client.user.setActivity('casting explosive magic | m. ')
+    client.user.setActivity('with explosive magic | m. ')
     console.log(`Logged in as: ${client.user.tag}!`)
    
 })
