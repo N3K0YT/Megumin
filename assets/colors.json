@@ -7,12 +7,15 @@
     "red": "#8e2430",
     "red_light": "#f94343",
     "blue_dark": "#3b5998",
-    "cyan": "#5780cd",
+    "cyan": "#56BDCD",
     "blue_light": "#ace9e7",
     "aqua": "#33a1ee",
     "pink": "#ff9dbb",
     "green_dark": "#2ac075",
     "green_light": "#a1ee33",
     "white": "#f9f9f6",
-    "cream": "#ffdab9"
+    "cream": "#ffdab9",
+    "lime": "#3dff00",
+    "dark_pink": "#9F0086",
+    "black": "#000000"
   }

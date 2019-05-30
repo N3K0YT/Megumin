@@ -4,11 +4,12 @@ const booru = require('booru')
 const slaps = require('./assets/slaps.json')
 const colors = require('./assets/colors.json')
 const dl = require('discord-leveling')
+
 /*							TODO
 -Add XP system (not important)
 -Add Profile (not important)
 -Add management commands
--Change slap to embeds with gifs
+-Add games
 ...
 */
 client.on('ready', () => {
@@ -80,6 +81,17 @@ client.on('message', msg => {
 		const nani = client.emojis.get("583450493745889285")
 		var user = msg.mentions.users.first()
 		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> slapped <@${user.id}>! ${nani.toString()} `).setImage(slap)
+		msg.channel.send(embed)
+		}
+})
+client.on('message', msg => {
+	if (msg.content.startsWith('m.poke')){
+		const values = Object.values(pokes)
+		const poke = values[parseInt(Math.random() * values.length)]
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+		var user = msg.mentions.users.first()
+		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> poked <@${user.id}>!`).setImage(poke)
 		msg.channel.send(embed)
 		}
 })
