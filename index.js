@@ -25,6 +25,7 @@ client.on('message', msg => {
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var xp = dl.Fetch(msg.author.id)
 		if (xp){
+			console.log(xp)
 		const embed = new Discord.RichEmbed().setTitle(msg.author.username).setColor(color).addField(`XP: ${xp.xp}`)
 		msg.channel.send(embed)
 }
