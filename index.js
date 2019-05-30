@@ -121,12 +121,12 @@ client.on('message', msg => {
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
     let bannedMember = client.fetchUser(usr.id)
-        if(!bannedMember) return msg.channel.send("Please provide a user to ban!")
+        if(!usr) return msg.channel.send("Please provide a user to ban!")
 
     if(!msg.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
-        //msg.guild.ban(bannedMember, {reason: reason})
+        msg.guild.ban(usr.id)
         msg.channel.send(`${usr.tag} has been banned from the guild!`)
     } catch(e) {
         console.log(e.message)
