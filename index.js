@@ -120,7 +120,7 @@ client.on('message', msg => {
 	var user = msg.mentions.users.first
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
-    let bannedMember = client.fetchUser(user)
+    let bannedMember = client.fetchUser(user.id)
         if(!bannedMember) return msg.channel.send("Please provide a user to ban!")
 
     if(!msg.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
@@ -137,7 +137,7 @@ client.on('message', msg => {
     .setColor(color)
     .setAuthor(`${msg.guild.name} Modlogs`, msg.guild.iconURL)
     .addField("Moderation:", "ban")
-    .addField("Moderated on:", `${bannedMember.username} (${bannedMember.id})`)
+    .addField("Victim:", `${bannedMember.username} (${bannedMember.id})`)
     .addField("Moderator:", msg.author.username)
     .addField("Date:", msg.createdAt.toLocaleString())
     
