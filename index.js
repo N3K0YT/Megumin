@@ -17,9 +17,7 @@ client.on('ready', () => {
    
 })
 client.on('message', msg => {
-	if (msg){
 		dl.AddXp(msg.author.id, 5)
-}
 })
 client.on('message', msg => {
 	if (msg.content === 'm.xp'){
