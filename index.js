@@ -55,7 +55,7 @@ client.on('message', msg => {
     if (msg.content.startsWith("m.safe ")) {
     	const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-        var query = msg.content.substr('m.safe '.length).toLowerCase
+        var query = msg.content.substr('m.safe '.length).toLowerCase().toString()
         booru.search('sb', query, { limit: 4, random: true }).then(posts => {
 			for (let post of posts){
 				if (post){
