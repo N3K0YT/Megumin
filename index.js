@@ -53,9 +53,11 @@ client.on('message', msg => {
 	if (msg.content.startsWith('m.slap')){
 		const values = Object.values(slaps)
 		const slap = values[parseInt(Math.random() * values.length)]
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 		const nani = client.emojis.get("583450493745889285")
 		var user = msg.mentions.users.first()
-		const embed = new Discord.RichEmbed().setDescription(`<@${msg.author.id}> slapped <@${user.id}>! ${nani.toString()} `).setImage(slap)
+		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> slapped <@${user.id}>! ${nani.toString()} `).setImage(slap)
 		msg.channel.send(embed)
 		}
 })
