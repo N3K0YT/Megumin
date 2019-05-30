@@ -46,6 +46,7 @@ client.on('message', msg => {
 		booru.search('r34', query, {limit: 4, random: true}).then(posts => {
 			for (let post of posts){
 				const embed = new Discord.RichEmbed().setTitle('Results on Rule 34').setColor(color).setImage(post.fileUrl).setFooter('Megumin by Aqua_')
+				msg.channel.send(embed)
 }
 })
 }
@@ -59,6 +60,7 @@ client.on('message', msg => {
 			for (let post of posts){
 				if (post){
 				const embed = new Discord.RichEmbed().setTitle(`Results for **${query}** on Safebooru`).setColor(color).setImage(post.fileUrl).setFooter('Megumin by Aqua_')
+				msg.channel.send(embed)
 			}}
 		}).catch(err => {
 			console.log(err)
