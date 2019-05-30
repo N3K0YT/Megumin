@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const booru = require('booru')
 const slaps = require('./assets/slaps.json')
+const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
 const dl = require('discord-leveling')
 
