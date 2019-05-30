@@ -121,9 +121,6 @@ client.on('message', msg => {
     let bannedMember = client.fetchUser(user)
         if(!bannedMember) return msg.channel.send("Please provide a user to ban!")
 
-    let reason = args.slice(1).join(" ")
-        if(!reason) reason = "No reason given!"
-
     if(!msg.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
@@ -139,7 +136,6 @@ client.on('message', msg => {
     .addField("Moderation:", "ban")
     .addField("Moderated on:", `${bannedMember.username} (${bannedMember.id})`)
     .addField("Moderator:", msg.author.username)
-    .addField("Reason:", reason)
     .addField("Date:", msg.createdAt.toLocaleString())
     
         let logs = msg.guild.channels.find(c => c.name === "logs")
