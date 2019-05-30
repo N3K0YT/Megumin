@@ -117,7 +117,7 @@ client.on('message', msg => {
 	if(msg.content.startsWith('m.ban ')){
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-	var usr = msg.mentions.users.first
+	var usr = msg.mentions.users.first()
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
     let bannedMember = client.fetchUser(usr.id)
