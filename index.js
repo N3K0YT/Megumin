@@ -76,7 +76,7 @@ client.on('message', msg => {
     if (msg.content === 'm.help') {
     	const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-        const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin').setDescription('Displaying help text for Megumin').addField('safe', 'Searches on Safebooru').addField('r34', 'UwU').addField('ping', 'No explanation needed, right?')
+        const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin').setDescription('Displaying help text for Megumin').addField('safe', 'Searches on Safebooru', true).addField('r34', 'UwU', true).addField('ping', 'No explanation needed, right?', true).addField('slap', 'Bitch slap that bitch', true).addField('poke', '***poke***', true)
         msg.channel.send(embed)
     }
 })
