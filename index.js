@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const booru = require('booru')
 const slaps = require('./assets/slaps.json')
+const hugs = require('./assets/hugs.json')
 const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
 const dl = require('discord-leveling')
@@ -103,4 +104,16 @@ client.on('message', msg => {
 		msg.channel.send(embed)
 		}
 })
+client.on('message', msg => {
+	if (msg.content.startsWith('m.hug')){
+		const values = Object.values(hugs)
+		const hug = values[parseInt(Math.random() * values.length)]
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+		var user = msg.mentions.users.first()
+		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> hugged <@${user.id}>!`).setImage(hug)
+		msg.channel.send(embed)
+		}
+})
+
 client.login(process.env.token)
