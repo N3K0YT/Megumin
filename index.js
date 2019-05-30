@@ -17,12 +17,16 @@ client.on('ready', () => {
    
 })
 client.on('message', msg = {
-	dl.AddXp(msg.author.id, 5)
+	if (msg){
+		dl.AddXp(msg.author.id, 5)
+}
 })
 client.on('message', msg = {
 	if (msg.content === 'm.xp'){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var xp = dl.Fetch(msg.author.id)
-		const embed = new Discord.RichEmbed().setTitle(msg.author.toString()).addField(`XP: ${xp}`)
+		const embed = new Discord.RichEmbed().setTitle(msg.author.toString()).setColor(color).addField(`XP: ${xp}`)
 		msg.channel.send(embed)
 }
 })
@@ -33,21 +37,25 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content.startsWith('m.r34 ')){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var query = msg.content.substr('m.r34 '.length)
 		booru.search('r34', query, {limit: 4, random: true}).then(posts => {
 			for (let post of posts){
-				const embed = new Discord.RichEmbed().setTitle('Results on Rule 34').setImage(post.fileUrl).setFooter('Megumin by Aqua_')
+				const embed = new Discord.RichEmbed().setTitle('Results on Rule 34').setColor(color).setImage(post.fileUrl).setFooter('Megumin by Aqua_')
 }
 })
 }
 })
 client.on('message', msg => {
     if (msg.content.startsWith("m.safe ")) {
+    	const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
         var query = msg.content.substr('m.safe '.length).toLowerCase
         booru.search('sb', query, { limit: 4, random: true }).then(posts => {
 			for (let post of posts){
 				if (post){
-				const embed = new Discord.RichEmbed().setTitle(`Results for **${query}** on Safebooru`).setImage(post.fileUrl).setFooter('Megumin by Aqua_')
+				const embed = new Discord.RichEmbed().setTitle(`Results for **${query}** on Safebooru`).setColor(color).setImage(post.fileUrl).setFooter('Megumin by Aqua_')
 			}}
 		}).catch(err => {
 			console.log(err)
@@ -57,7 +65,9 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
     if (msg.content === 'm.help') {
-        const embed = new Discord.RichEmbed().setTitle('Megumin').setDescription('Displaying help text for Megumin').addField('safe', 'Searches on Safebooru').addField('r34', 'UwU').addField('ping', 'No explanation needed, right?')
+    	const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+        const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin').setDescription('Displaying help text for Megumin').addField('safe', 'Searches on Safebooru').addField('r34', 'UwU').addField('ping', 'No explanation needed, right?')
     }
 })
 client.on('message', msg => {
