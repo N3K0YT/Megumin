@@ -137,7 +137,7 @@ client.on('message', msg => {
     .setColor(color)
     .setAuthor(`${msg.guild.name} Modlogs`, msg.guild.iconURL)
     .addField("Moderation:", "ban")
-    .addField("Victim:", `${bannedMember.username} (${bannedMember.id})`)
+    .addField("Victim:", `${usr.username} (${usr.id})`)
     .addField("Moderator:", msg.author.username)
     .addField("Date:", msg.createdAt.toLocaleString())
     
