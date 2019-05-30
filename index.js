@@ -115,6 +115,8 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if(msg.content.startsWith('m.ban ')){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 	var user = msg.mentions.users.first
 	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
@@ -129,9 +131,10 @@ client.on('message', msg => {
     } catch(e) {
         console.log(e.message)
     }
+    
 
     let embed = new Discord.RichEmbed()
-    .setColor(colours.red_light)
+    .setColor(color)
     .setAuthor(`${msg.guild.name} Modlogs`, msg.guild.iconURL)
     .addField("Moderation:", "ban")
     .addField("Moderated on:", `${bannedMember.username} (${bannedMember.id})`)
