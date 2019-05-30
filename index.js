@@ -145,7 +145,7 @@ client.on('message', msg => {
         }
 })
 client.on('message', msg => {
-	if(msg.content.startsWith('m.kick  ')){
+	if(msg.content.startsWith('m.kick ')){
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 	var usr = msg.mentions.users.first()
