@@ -1,11 +1,14 @@
 {
-  "name": "megumin",
+  "name": "Megumin",
   "version": "1.0.0",
   "description": "A Discord bot",
   "main": "bot.js",
   "dependencies": {
     "discord.js": "^11.5.0",
-    "booru": "^2.0.2"
+    "booru": "^2.0.2",
+    "discord-leveling": "^1.0.3",
+    "sequelize": "^5.8.7",
+    "sqlite3": "^4.0.8"
   },
   "devDependencies": {},
   "scripts": {

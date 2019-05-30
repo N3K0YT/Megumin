@@ -3,6 +3,7 @@ const client = new Discord.Client()
 const booru = require('booru')
 const slaps = require('./assets/slaps.json')
 const colors = require('./assets/colors.json')
+const dl = require('discord-leveling')
 /*							TODO
 -Add XP system (not important)
 -Add Profile (not important)
@@ -15,6 +16,16 @@ client.on('ready', () => {
     console.log(`Logged in as: ${client.user.tag}!`)
    
 })
+client.on('message', msg = {
+	dl.AddXp(msg.author.id, 5)
+})
+client.on('message', msg = {
+	if (msg.content === 'm.xp'){
+		var xp = dl.Fetch(msg.author.id)
+		const embed = new Discord.RichEmbed().setTitle(msg.author.toString()).addField(`XP: ${xp}`)
+		msg.channel.send(embed)
+}
+})
 client.on('message', msg => {
 	if(msg.content === 'm.ping'){
 		msg.channel.send(`Pong! ${client.ping}`)
@@ -22,7 +33,7 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content.startsWith('m.r34 ')){
-		var query = msg.content.substr('m.r34 '.length).toLowerCase
+		var query = msg.content.substr('m.r34 '.length)
 		booru.search('r34', query, {limit: 4, random: true}).then(posts => {
 			for (let post of posts){
 				const embed = new Discord.RichEmbed().setTitle('Results on Rule 34').setImage(post.fileUrl).setFooter('Megumin by Aqua_')
