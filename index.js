@@ -149,13 +149,13 @@ client.on('message', msg => {
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 	var usr = msg.mentions.users.first()
-	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
+	    if(!msg.member.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
         if(!usr) return msg.channel.send("Please provide a user to kick!")
 
-    if(!msg.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
+    if(!msg.guild.me.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
-        msg.guild.kick(usr.id)
+        usr.kick()
         msg.channel.send(`${usr.tag} has been kicked from the guild!`)
     } catch(e) {
         console.log(e.message)
@@ -179,11 +179,11 @@ client.on('message', msg => {
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 	var usr = msg.mentions.users.first()
-	    if(!msg.member.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
+	    if(!msg.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("You don't have permission to perform this command!")
 
         if(!usr) return msg.channel.send("Please provide a user to unban!")
 
-    if(!msg.guild.me.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
+    if(!msg.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
         msg.guild.unban(usr.id)
