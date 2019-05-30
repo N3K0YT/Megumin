@@ -16,12 +16,12 @@ client.on('ready', () => {
     console.log(`Logged in as: ${client.user.tag}!`)
    
 })
-client.on('message', msg = {
+client.on('message', msg => {
 	if (msg){
 		dl.AddXp(msg.author.id, 5)
 }
 })
-client.on('message', msg = {
+client.on('message', msg => {
 	if (msg.content === 'm.xp'){
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
