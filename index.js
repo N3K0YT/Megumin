@@ -71,6 +71,7 @@ client.on('message', msg => {
     	const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
         const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin').setDescription('Displaying help text for Megumin').addField('safe', 'Searches on Safebooru').addField('r34', 'UwU').addField('ping', 'No explanation needed, right?')
+        msg.channel.send(embed)
     }
 })
 client.on('message', msg => {
