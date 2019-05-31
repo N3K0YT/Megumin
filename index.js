@@ -324,7 +324,7 @@ client.on('message', msg => {
 		if (result === true){
 			message = 'You survived :D'
 }
-		else {
+		if (result === false {
 			message = `Oof, you've been shot ${nani}`
 }
 		const embed = new Discord.RichEmbed().setColor(color).setTitle(message)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
