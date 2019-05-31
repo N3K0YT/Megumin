@@ -327,7 +327,7 @@ client.on('message', msg => {
 		else {
 			message = `Oof, you've been shot ${nani}`
 }
-		const embed = new Discord.RichEmbed().setColor(color).setTitle(mesaage)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
+		const embed = new Discord.RichEmbed().setColor(color).setTitle(message)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
 		msg.channel.send(embed)
 }
 })
