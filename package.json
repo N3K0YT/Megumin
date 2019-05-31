@@ -9,7 +9,7 @@
     "discord-leveling": "^1.0.3",
     "sequelize": "^5.8.7",
     "sqlite3": "^4.0.8",
-    "mal-api": "^1.0.0'"
+    "mal-api": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {
