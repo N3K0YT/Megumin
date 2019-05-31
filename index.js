@@ -298,7 +298,7 @@ client.on('message', msg => {
 }
 else if (msg.content === 'm.avatar'){
 	const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randshot.length)]
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${msg.author.username}'s avatar`).setImage(msg.author.avatarURL)
 		msg.channel.send(embed)
 }
@@ -310,7 +310,7 @@ client.on('message', msg => {
   .then(res => {
   	console.log(res)
   const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randshot.length)]
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 		const embed = new Discord.RichEmbed().setColor(color)
 })
   .catch(err => {return})
@@ -320,7 +320,7 @@ client.on('message', msg => {
 	if (msg.content === 'm.roulette'){
 		var message;
 		const randshot = Object.values(roulette)
-		const result = randshot[parseInt(Math.random() * randcol.length)]
+		const result = randshot[parseInt(Math.random() * randshot.length)]
 		if (result === true){
 			message = 'You survived :D'
 			console.log(message)
