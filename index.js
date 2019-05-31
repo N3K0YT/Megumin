@@ -318,7 +318,7 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content === 'm.roulette'){
-		var msg;
+		var message;
 		const randshot = Object.values(roulette)
 		const result = randshot[parseInt(Math.random() * randcol.length)]
 		if (result === true){
