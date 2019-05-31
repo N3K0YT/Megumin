@@ -5,10 +5,11 @@ const slaps = require('./assets/slaps.json')
 const hugs = require('./assets/hugs.json')
 const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
+const roulette = require('./assets/roulette.json')
 const dl = require('discord-leveling')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
-
+const nani = client.emojis.get("583450493745889285")
 /*							TODO
 -Add management commands
 -Add games
@@ -21,11 +22,11 @@ client.on('ready', () => {
 })
 client.on('message', msg => {
 		dl.AddXp(msg.author.id, 5)
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 })
 client.on('message', msg => {
 	if (msg.content === 'm.xp'){
-		const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var xp = dl.Fetch(msg.author.id)
 		if (xp){
 			console.log(xp)
@@ -41,8 +42,6 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content.startsWith('m.r34 ')){
-		const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var query = msg.content.substr('m.r34 '.length)
 		booru.search('r34', query, {limit: 4, random: true}).then(posts => {
 			for (let post of posts){
@@ -220,7 +219,7 @@ client.on('message', msg => {
     if(!msg.guild.me.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
-    	usr.addRole("muted")
+    	usr.addRole("Muted")
         msg.channel.send(`${usr.tag} has been muted xD`)
     } catch(e) {
         console.log(e.message)
@@ -252,7 +251,7 @@ client.on('message', msg => {
     if(!msg.guild.me.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
-        usr.removeRole('muted')
+        usr.removeRole('Muted')
         msg.channel.send(`${usr.tag} has been unmuted from the guild!`)
     } catch(e) {
         console.log(e.message)
@@ -303,11 +302,29 @@ else if (msg.content === 'm.avatar'){
 client.on('message', msg => {
 	if (msg.content.startsWith('m.anime ')){
 		var query = msg.content.substr('m.anime '.length)
-		api.get(query)
+		kitsu.get(query)
   .then(res => {
   	console.log(res)
+  const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+		const embed = new Discord.RichEmbed().setColor(color)
 })
   .catch(err => {return})
+  }
+})
+client.on('message', msg => {
+	if (msg.content === 'm.roulette'){
+		var msg;
+		const randshot = Object.values(roulette)
+		const result = randshot[parseInt(Math.random() * randcol.length)]
+		if (result === true){
+			mesaage = 'You survived :D'
+}
+		else {
+			message = `Oof, you've been shot ${nani}`
+}
+		const embed = new Discord.RichEmbed().setColor(color).setTitle(mesaage)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
+		msg.channel.send(embed)
 }
 })
 
