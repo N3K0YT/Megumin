@@ -307,7 +307,7 @@ client.on('message', msg => {
   .then(res => {
   	console.log(res)
 })
-  .catch(err => { ... })
+  .catch(err => {return})
 }
 })
 
