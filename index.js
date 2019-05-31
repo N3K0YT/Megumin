@@ -6,7 +6,8 @@ const hugs = require('./assets/hugs.json')
 const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
 const dl = require('discord-leveling')
-
+const malapi = require('mal-api')
+const mal = new malapi()
 /*							TODO
 -Add management commands
 -Add games
@@ -296,6 +297,16 @@ else if (msg.content === 'm.avatar'){
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${msg.author.username}'s avatar`).setImage(msg.author.avatarURL)
 		msg.channel.send(embed)
+}
+})
+client.on('message', msg => {
+	if (msg.content.startsWith('m.anime ')){
+		var query = msg.content.substr('m.anime '.length)
+		mal.manga.searchManga(query).then(res => {
+			console.log(res)
+			//const embed = new Discord.RichEmbed().setColor(color).setTitle
+})
+  .catch(err => console.error(err))
 }
 })
 
