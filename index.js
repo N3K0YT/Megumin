@@ -323,12 +323,14 @@ client.on('message', msg => {
 		const result = randshot[parseInt(Math.random() * randcol.length)]
 		if (result === true){
 			message = 'You survived :D'
+			console.log(message)
 }
-		if (result === false {
+		if (result === false){
 			message = `Oof, you've been shot ${nani}`
+			console.log(message)
 }
-		const embed = new Discord.RichEmbed().setColor(color).setTitle(message)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
-		msg.channel.send(embed)
+		//const embed = new Discord.RichEmbed().setColor(color).setTitle(message)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
+		//msg.channel.send(embed)
 }
 })
 client.on('mesage', msg =>{
