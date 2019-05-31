@@ -292,7 +292,7 @@ client.on('message', msg => {
 else if (msg.content === 'm.avatar'){
 	const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${msg.author.username}'s avatar).setImage(msg.author.avatarURL)
+		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${msg.author.username}'s avatar`).setImage(msg.author.avatarURL)
 		msg.channel.send(embed)
 }
 })
