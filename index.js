@@ -6,8 +6,9 @@ const hugs = require('./assets/hugs.json')
 const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
 const dl = require('discord-leveling')
-const malapi = require('mal-api')
-const mal = new malapi()
+const malScraper = require('mal-scraper')
+const search = malScraper.search
+
 /*							TODO
 -Add management commands
 -Add games
@@ -302,11 +303,11 @@ else if (msg.content === 'm.avatar'){
 client.on('message', msg => {
 	if (msg.content.startsWith('m.anime ')){
 		var query = msg.content.substr('m.anime '.length)
-		mal.manga.searchManga(query).then(res => {
-			console.log(res)
-			//const embed = new Discord.RichEmbed().setColor(color).setTitle
+		search.search('anime' {
+			maxResults: 1
+			term: query}).then(res => {
+				console.log(res)
 })
-  .catch(err => console.error(err))
 }
 })
 
