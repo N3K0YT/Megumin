@@ -9,7 +9,6 @@ const roulette = require('./assets/roulette.json')
 const dl = require('discord-leveling')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
-const nani = client.emojis.get("583450493745889285")
 /*							TODO
 -Add management commands
 -Add games
@@ -318,6 +317,7 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content === 'm.roulette'){
+		const nani = client.emojis.get("583450493745889285")
 		var message;
 		const randshot = Object.values(roulette)
 		const result = randshot[parseInt(Math.random() * randshot.length)]
@@ -329,8 +329,8 @@ client.on('message', msg => {
 			message = `Oof, you've been shot ${nani}`
 			console.log(message)
 }
-		//const embed = new Discord.RichEmbed().setColor(color).setTitle(message)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
-		//msg.channel.send(embed)
+		const embed = new Discord.RichEmbed().setColor(color).setTitle(message)addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
+		msg.channel.send(embed)
 }
 })
 client.on('mesage', msg =>{
