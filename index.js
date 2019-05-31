@@ -269,5 +269,26 @@ client.on('message', msg => {
         logs.send(embed)
         }
 })
+client.on('message', msg => {
+	if(msg.content === 'm.info' {
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+		var secs = client.uptime / 1000;
+		var days = Math.floor(secs / 86400)
+		var mins = Math.floor(secs /3600)
+		var seconds = secs % 60
+		const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin Help').addField('Made by:', 'Aqua_').addField('Uptime:', `${days} days / ${mins} minutes / ${seconds} seconds`).setFooter(`Requested by ${msg.author.username}`, msg.author.avatarURL)
+        }
+})
+client.on('message', msg => {
+	if (msg.content.startsWith(m.avatar )){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
+		var usr = msg.mentions.users.first()
+		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${usr.username}'s avatar).setImage(usr.avatarURL)
+		msg.channel.send(embed)
+		
+}
+})
 
 client.login(process.env.token)
