@@ -112,6 +112,7 @@ client.on('message', msg => {
 		var user = msg.mentions.users.first()
 		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> hugged <@${user.id}>!`).setImage(hug)
 		msg.channel.send(embed)
+		if (user.tag === 'Megumin#
 		}
 })
 client.on('message', msg => {
@@ -318,7 +319,7 @@ client.on('message', msg => {
 		const randshot = Object.values(roulette)
 		const result = randshot[parseInt(Math.random() * randcol.length)]
 		if (result === true){
-			mesaage = 'You survived :D'
+			message = 'You survived :D'
 }
 		else {
 			message = `Oof, you've been shot ${nani}`
@@ -327,5 +328,12 @@ client.on('message', msg => {
 		msg.channel.send(embed)
 }
 })
-
+client.on('mesage', msg =>{
+	if (msg.content.startsWith('m.passwd ')){
+		var passlength = parseInt(msg.content.substr('m.passwd '.length))
+		var passwd
+}
+})
+client.on('message', msg =>{
+}) 
 client.login(process.env.token)
