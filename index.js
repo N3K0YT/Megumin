@@ -306,8 +306,7 @@ else if (msg.content === 'm.avatar'){
 client.on('message', msg => {
 	if (msg.content.startsWith('m.anime ')){
 		var query = msg.content.substr('m.anime '.length)
-		kitsu.get(query)
-  .then(res => {
+		kitsu.get(query).then(res => {
   	console.log(res)
   const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
