@@ -112,7 +112,10 @@ client.on('message', msg => {
 		var user = msg.mentions.users.first()
 		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> hugged <@${user.id}>!`).setImage(hug)
 		msg.channel.send(embed)
-		if (user.tag === 'Megumin#
+		if (user.tag === 'Megumin#6443'){
+			const embed = new Discord.RichEmbed().setColor(color).setTitle('UwU')
+			msg.channel.send(embed)
+}
 		}
 })
 client.on('message', msg => {
