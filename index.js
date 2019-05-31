@@ -285,7 +285,7 @@ client.on('message', msg => {
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var usr = msg.mentions.users.first()
-		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${usr.username}'s avatar).setImage(usr.avatarURL)
+		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${usr.username}'s avatar`).setImage(usr.avatarURL)
 		msg.channel.send(embed)
 		
 }
