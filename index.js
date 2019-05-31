@@ -9,6 +9,7 @@ const roulette = require('./assets/roulette.json')
 const dl = require('discord-leveling')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
+
 /*							TODO
 -Add management commands
 -Add games
@@ -317,6 +318,8 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content === 'm.roulette'){
+		const randcol = Object.values(colors)
+		const color = randcol[parseInt(Math.random() * randcol.length)]
 		const nani = client.emojis.get("583450493745889285")
 		var message;
 		const randshot = Object.values(roulette)
