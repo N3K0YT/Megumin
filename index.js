@@ -270,7 +270,7 @@ client.on('message', msg => {
         }
 })
 client.on('message', msg => {
-	if(msg.content === 'm.info' {
+	if(msg.content === 'm.info'){
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var secs = client.uptime / 1000;
