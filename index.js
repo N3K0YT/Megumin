@@ -281,7 +281,7 @@ client.on('message', msg => {
         }
 })
 client.on('message', msg => {
-	if (msg.content.startsWith(m.avatar )){
+	if (msg.content.startsWith('m.avatar ')){
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 		var usr = msg.mentions.users.first()
