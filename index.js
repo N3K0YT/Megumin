@@ -303,7 +303,7 @@ else if (msg.content === 'm.avatar'){
 client.on('message', msg => {
 	if (msg.content.startsWith('m.anime ')){
 		var query = msg.content.substr('m.anime '.length)
-		search.search('anime' {
+		search.search('anime', {
 			maxResults: 1
 			term: query}).then(res => {
 				console.log(res)
