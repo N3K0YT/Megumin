@@ -298,7 +298,7 @@ client.on('message', msg => {
 }
 else if (msg.content === 'm.avatar'){
 	const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randcol.length)]
+		const color = randcol[parseInt(Math.random() * randshot.length)]
 		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${msg.author.username}'s avatar`).setImage(msg.author.avatarURL)
 		msg.channel.send(embed)
 }
@@ -310,7 +310,7 @@ client.on('message', msg => {
   .then(res => {
   	console.log(res)
   const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randcol.length)]
+		const color = randcol[parseInt(Math.random() * randshot.length)]
 		const embed = new Discord.RichEmbed().setColor(color)
 })
   .catch(err => {return})
