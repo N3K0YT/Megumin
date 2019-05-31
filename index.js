@@ -278,7 +278,7 @@ client.on('message', msg => {
 		var mins = Math.floor(secs /3600)
 		var seconds = (secs % 60).split('.')
 		console.log(seconds[0])
-		const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin Help').addField('Made by:', 'Aqua_').addField('Uptime:', `${days} days / ${mins} minutes / ${seconds.toFixed(2)} seconds`).setFooter(`Requested by ${msg.author.username}`, msg.author.avatarURL)
+		const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin Info').addField('Made by:', 'Aqua_').addField('Uptime:', `${days} days / ${mins} minutes / ${seconds.toFixed(2)} seconds`).setFooter(`Requested by ${msg.author.username}`, msg.author.avatarURL)
 		msg.channel.send(embed)
         }
 })
