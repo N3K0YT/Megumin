@@ -6,7 +6,7 @@ const hugs = require('./assets/hugs.json')
 const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
 const roulette = require('./assets/roulette.json')
-const dl = require('discord-leveling')
+const sql = require('sqlite3')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
 
@@ -18,12 +18,18 @@ const kitsu = new Kitsu()
 client.on('ready', () => {
     client.user.setActivity('with explosive magic | m. ')
     console.log(`Logged in as: ${client.user.tag}!`)
+    
    
 })
 client.on('message', msg => {
-		dl.AddXp(msg.author.id, 5)
+		
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
+		sql.open('./assets/levels.sqlite')
+		sql.get(`SELECT * FROM levels WHERE userId = "${msg.author.id}"`).then(row => {
+			if (!row){
+				sql.run("INSERT INTO levels (userId, xp) VALUES (?, ?)",  [msg.author.id, xp])
+		
 })
 client.on('message', msg => {
 	if (msg.content === 'm.xp'){
@@ -342,5 +348,11 @@ client.on('mesage', msg =>{
 }
 })
 client.on('message', msg =>{
+	if (msg.content === 'm.xp'){
+		sql.open('./assets/levels.sqlite')
+}
+			
+})
+}
 }) 
 client.login(process.env.token)
