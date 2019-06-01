@@ -53,16 +53,6 @@ con.query(lol, console.log)
 })
 })
 client.on('message', msg => {
-	if (msg.content === 'm.xp'){
-		var xp = dl.Fetch(msg.author.id)
-		if (xp){
-			console.log(xp)
-		const embed = new Discord.RichEmbed().setTitle(msg.author.username).setColor(color).addField(`XP: ${xp.xp}`)
-		msg.channel.send(embed)
-}
-}
-})
-client.on('message', msg => {
 	if(msg.content === 'm.ping'){
 		msg.channel.send(`Pong! ${client.ping}`)
 	}
