@@ -10,7 +10,7 @@ const mysql = require('mysql')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
 var color;
-
+var muted;
 function stripEmoji(text){
 	return text.replace(/([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
 }
@@ -30,6 +30,7 @@ client.on('ready', () => {
    
 })
 client.on('message', msg => {
+	muted = msg.guild.roles.find('name', 'Muted');
 		var lol;
 		var lol2;
 		const randcol = Object.values(colors)
@@ -56,6 +57,7 @@ lol2 = `UPDATE xplist SET name = '${stripEmoji(msg.author.username)}' WHERE user
 }
 con.query(lol)
 con.query(lol2)
+con.end()
 })
 }
 })
@@ -99,6 +101,7 @@ client.on('message', msg => {
 })
 client.on('message', msg => {
 	if (msg.content.startsWith('m.xp')){
+		con.connect()
 	var amm;
 	var usr;
 	var embed;
@@ -119,6 +122,7 @@ client.on('message', msg => {
 		embed = new Discord.RichEmbed().setColor(color).setTitle(`${usr}'s xp`).setDescription(`Your xp is: ${amm}`)
 		console.log(`${usr} | ${amm}`)
 		msg.channel.send(embed)
+		con.end()
 		
 })
 }
@@ -128,7 +132,19 @@ client.on('message', msg => {
     if (msg.content === 'm.help') {
     	const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-        const embed = new Discord.RichEmbed().setColor(color).setTitle('Megumin').setDescription('Displaying help text for Megumin').addField('safe', 'Searches on Safebooru', true).addField('r34', 'UwU', true).addField('ping', 'No explanation needed, right?', true).addField('slap', 'Bitch slap that bitch', true).addField('poke', '***poke***', true)
+        const embed = new Discord.RichEmbed()
+		.setColor(color)
+		.setTitle('Megumin')
+		.setDescription('Displaying help text for Megumin')
+		.addField('safe', 'Searches on Safebooru', true)
+		.addField('r34', 'UwU', true)
+		.addField('ping', 'No explanation needed, right?', true)
+		.addField('slap', 'Bitch slap that bitch', true)
+		.addField('avatar', 'Shows your avatar, if you ***ping*** someone it will show theirs', true)
+		.addField('poke', '***poke***', true)
+		.addField('xp', 'shows your xp', true )
+		.addField('huh', 'hugs tagged user', true)
+		.addField('roulette', '***boom***', true)
         msg.channel.send(embed)
     }
 })
@@ -142,6 +158,10 @@ client.on('message', msg => {
 		var user = msg.mentions.users.first()
 		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> slapped <@${user.id}>! ${nani.toString()} `).setImage(slap)
 		msg.channel.send(embed)
+		if (user.tag === 'Megumin#6443'){
+			const embed = new Discord.RichEmbed().setColor(color).setTitle('Ouch')
+			msg.channel.send(embed)
+}
 		}
 })
 client.on('message', msg => {
@@ -153,6 +173,10 @@ client.on('message', msg => {
 		var user = msg.mentions.users.first()
 		const embed = new Discord.RichEmbed().setColor(color).setDescription(`<@${msg.author.id}> poked <@${user.id}>!`).setImage(poke)
 		msg.channel.send(embed)
+		if (user.tag === 'Megumin#6443'){
+			const embed = new Discord.RichEmbed().setColor(color).setTitle('UwU')
+			msg.channel.send(embed)
+}
 		}
 })
 client.on('message', msg => {
@@ -275,7 +299,9 @@ client.on('message', msg => {
     if(!msg.guild.me.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
-    	usr.addRole("Muted")
+    	var yeet = msg.mentions.members.first()
+    	yeet.addRole(muted)
+    	console.log(`${usr.tag} muted`)
         msg.channel.send(`${usr.tag} has been muted xD`)
     } catch(e) {
         console.log(e.message)
@@ -307,7 +333,8 @@ client.on('message', msg => {
     if(!msg.guild.me.hasPermission(["ADMINISTRATOR"])) return msg.channel.send("I dont have permission to perform this command!")|
     msg.delete()
     try {
-        usr.removeRole('Muted')
+    	var yeet = msg.mentions.members.first()
+        yeet.removeRole(muted)
         msg.channel.send(`${usr.tag} has been unmuted from the guild!`)
     } catch(e) {
         console.log(e.message)
@@ -356,18 +383,6 @@ else if (msg.content === 'm.avatar'){
 }
 })
 client.on('message', msg => {
-	if (msg.content.startsWith('m.anime ')){
-		var query = msg.content.substr('m.anime '.length)
-		kitsu.get(query).then(res => {
-  	console.log(res)
-  const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randcol.length)]
-		const embed = new Discord.RichEmbed().setColor(color)
-})
-  .catch(err => {return})
-  }
-})
-client.on('message', msg => {
 	if (msg.content === 'm.roulette'){
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
@@ -393,4 +408,5 @@ client.on('mesage', msg =>{
 		var passwd
 }
 })
-client.login(process.env.token)
+client.login('NTgzMzI2ODU3NDQ1NzY5MjI3.XO6vlQ.jmHvFjcu_ISZPZdQPHZoAoTwEPM')
+//client.login(process.env.token)
