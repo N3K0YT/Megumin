@@ -16,7 +16,7 @@ const kitsu = new Kitsu()
 ...
 */
 function genExp(){
-	Math.floor(Math.random() * 25 - 5 + 1)+ 5;
+	return Math.floor(Math.random() * 25 - 5 + 1)+ 5;
 }
 client.on('ready', () => {
     client.user.setActivity('with explosive magic | m. ')
