@@ -41,11 +41,11 @@ client.on('message', msg => {
 			con.query(`SELECT * from xplist WHERE userId = '${msg.author.id}'`, (err, rows) =>{
 				if (err) throw err;
 				if (rows.length < 1){
-					lol = `INSERT INTO xplist {userId, xp} VALUES ('${msg.author.id}', ${genExp()})`
+					lol = `INSERT INTO xplist {userId, xp} VALUES (${msg.author.id}, ${genExp()})`
 					
 } else{
 let xp = rows[0].xp
-lol = `UPDATE xp SET xp = ${xp+ genExp()} WHERE userId = ${msg.author.id}`
+lol = `UPDATE xplist SET xp = ${xp+ genExp()} WHERE userId = ${msg.author.id}`
 }
 con.query(lol, console.log)
 })
