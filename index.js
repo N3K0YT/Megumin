@@ -393,9 +393,4 @@ client.on('mesage', msg =>{
 		var passwd
 }
 })
-client.on('message', msg =>{
-	if (msg.content === 'm.xp'){
-		//use con
-}
-}) 
-client.login('NTgzMzI2ODU3NDQ1NzY5MjI3.XO6vlQ.jmHvFjcu_ISZPZdQPHZoAoTwEPM')
+client.login(process.env.token)
