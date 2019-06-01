@@ -29,6 +29,8 @@ client.on('message', msg => {
 		sql.get(`SELECT * FROM levels WHERE userId = "${msg.author.id}"`).then(row => {
 			if (!row){
 				sql.run("INSERT INTO levels (userId, xp) VALUES (?, ?)",  [msg.author.id, xp])
+				}
+				})
 		
 })
 client.on('message', msg => {
