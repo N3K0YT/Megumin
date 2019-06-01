@@ -408,5 +408,4 @@ client.on('mesage', msg =>{
 		var passwd
 }
 })
-client.login('NTgzMzI2ODU3NDQ1NzY5MjI3.XO6vlQ.jmHvFjcu_ISZPZdQPHZoAoTwEPM')
-//client.login(process.env.token)
+client.login(process.env.token)
