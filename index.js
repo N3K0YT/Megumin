@@ -30,6 +30,7 @@ client.on('ready', () => {
    
 })
 client.on('message', msg => {
+		var lol0;
 		var lol;
 		var lol2;
 		const randcol = Object.values(colors)
@@ -50,10 +51,12 @@ client.on('message', msg => {
 					lol = `INSERT INTO xplist (name, userId, xp) VALUES (${msg.author.name}, ${msg.author.id}, ${genExp()})`
 					
 } else{
+lol0 = `INSERT INTO xplist (name, userId, xp) VALUES (${msg.author.name}, ${msg.author.id}, ${genExp()})`
 let xp = rows[0].xp
 lol = `UPDATE xplist SET xp = ${xp+ genExp()} WHERE userId = ${msg.author.id}`
 lol2 = `UPDATE xplist SET name = '${stripEmoji(msg.author.username)}' WHERE userId = ${msg.author.id}`
 }
+con.query(lol0)
 con.query(lol)
 con.query(lol2)
 })
