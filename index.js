@@ -353,7 +353,5 @@ client.on('message', msg =>{
 	if (msg.content === 'm.xp'){
 		sql.open('./assets/levels.sqlite')
 }
-			
-})
 }) 
 client.login(process.env.token)
