@@ -4,15 +4,18 @@
   "description": "A Discord bot",
   "main": "bot.js",
   "dependencies": {
-    "discord.js": "^11.5.0",
     "booru": "^2.0.2",
+    "discord.js": "^11.5.0",
+    "emoji-regex": "^8.0.0",
     "kitsu": "^7.0.3",
     "mysql": "^2.17.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
   "scripts": {
     "test": "test.js",
-    "start": "index.js"
+    "start": "nodemon index.js"
   },
   "author": "Aqua_",
   "license": "ISC"

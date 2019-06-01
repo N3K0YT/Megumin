@@ -9,6 +9,11 @@ const roulette = require('./assets/roulette.json')
 const mysql = require('mysql')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
+var color;
+
+function stripEmoji(text){
+	return text.replace(/([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+}
 
 /*							TODO
 -Add management commands
@@ -26,30 +31,33 @@ client.on('ready', () => {
 })
 client.on('message', msg => {
 		var lol;
+		var lol2;
 		const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randcol.length)]
+		color = randcol[parseInt(Math.random() * randcol.length)]
 		con = mysql.createConnection({
 			host: 'remotemysql.com',
 			user: 'mzBFUTIoNt',
 			port:  '3306',
-			password: 'pgVigckIOW',
+			password: 'WmmCoYMmQc',
 			database: 'mzBFUTIoNt'
 })
 		con.connect(err => {
 			if (err) throw err;
-			console.log('Connected to db')
+			if (!msg.author.bot){
 			con.query(`SELECT * from xplist WHERE userId = '${msg.author.id}'`, (err, rows) =>{
 				if (err) throw err;
 				if (rows.length < 1){
-					lol = `INSERT INTO xplist {userId, xp} VALUES (${msg.author.id}, ${genExp()})`
+					lol = `INSERT INTO xplist (name, userId, xp) VALUES (${msg.author.name}, ${msg.author.id}, ${genExp()})`
 					
 } else{
 let xp = rows[0].xp
 lol = `UPDATE xplist SET xp = ${xp+ genExp()} WHERE userId = ${msg.author.id}`
+lol2 = `UPDATE xplist SET name = '${stripEmoji(msg.author.username)}' WHERE userId = ${msg.author.id}`
 }
-con.query(lol, console.log)
+con.query(lol)
+con.query(lol2)
 })
-			
+}
 })
 })
 client.on('message', msg => {
@@ -88,6 +96,33 @@ client.on('message', msg => {
 			msg.channel.send('Error')
 })
     }
+})
+client.on('message', msg => {
+	if (msg.content.startsWith('m.xp')){
+	var amm;
+	var usr;
+	var embed;
+	var user = msg.mentions.users.first();
+	if (user){
+	con.query(`SELECT * from xplist WHERE userId = '${user.id}'`, (err, result) =>{
+		amm = result[0].xp
+		usr =user.username
+		embed = new Discord.RichEmbed().setColor(color).setTitle(`${usr}'s xp`).setDescription(`Your xp is: ${amm}`)
+		console.log(`${usr} | ${amm}`)
+		msg.channel.send(embed)
+		
+})
+} else {
+	con.query(`SELECT * from xplist WHERE userId = '${msg.author.id}'`, (err, result) =>{
+		usr = msg.author.username
+		amm = result[0].xp
+		embed = new Discord.RichEmbed().setColor(color).setTitle(`${usr}'s xp`).setDescription(`Your xp is: ${amm}`)
+		console.log(`${usr} | ${amm}`)
+		msg.channel.send(embed)
+		
+})
+}
+}
 })
 client.on('message', msg => {
     if (msg.content === 'm.help') {
@@ -360,7 +395,7 @@ client.on('mesage', msg =>{
 })
 client.on('message', msg =>{
 	if (msg.content === 'm.xp'){
-		sql.open('./assets/levels.sqlite')
+		//use con
 }
 }) 
-client.login(process.env.token)
+client.login('NTgzMzI2ODU3NDQ1NzY5MjI3.XO6vlQ.jmHvFjcu_ISZPZdQPHZoAoTwEPM')
