@@ -29,10 +29,10 @@ client.on('message', msg => {
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
 		con = mysql.createConnection({
-			host: 'remotemysql.com'
-			user: 'mzBFUTIoNt'
-			port:  '3306'
-			password: 'pgVigckIOW'
+			host: 'remotemysql.com',
+			user: 'mzBFUTIoNt',
+			port:  '3306',
+			password: 'pgVigckIOW',
 			database: 'mzBFUTIoNt'
 })
 		con.connect(err => {
