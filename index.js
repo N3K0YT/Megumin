@@ -6,7 +6,7 @@ const hugs = require('./assets/hugs.json')
 const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
 const roulette = require('./assets/roulette.json')
-const sql = require('sqlite3')
+const sql = require('mysql')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
 
@@ -15,6 +15,9 @@ const kitsu = new Kitsu()
 -Add games
 ...
 */
+function genExp(){
+	Math.floor(Math.random() * 25 - 5 + 1)+ 5;
+}
 client.on('ready', () => {
     client.user.setActivity('with explosive magic | m. ')
     console.log(`Logged in as: ${client.user.tag}!`)
@@ -22,16 +25,32 @@ client.on('ready', () => {
    
 })
 client.on('message', msg => {
-		
+		var lol;
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-		sql.open('./assets/levels.sqlite')
-		sql.get(`SELECT * FROM levels WHERE userId = "${msg.author.id}"`).then(row => {
-			if (!row){
-				sql.run("INSERT INTO levels (userId, xp) VALUES (?, ?)",  [msg.author.id, xp])
-				}
-				})
-		
+		con = mysql.createConnection({
+			host: 'remotemysql.com'
+			user: 'mzBFUTIoNt'
+			port:  '3306'
+			password: 'pgVigckIOW'
+			database: 'mzBFUTIoNt'
+})
+		con.connect(err => {
+			if (err) throw err;
+			console.log('Connected to db')
+			con.query(`SELECT * from xplist WHERE userId = '${msg.author.id}'`, (err, rows) =>{
+				if (err) throw err;
+				if (rows.length < 1){
+					lol = `INSERT INTO xp {userId, xp} VALUES (${msg.author.id}, ${genExp()})`
+					
+} else{
+let xp = rows[0].xp
+lol = `UPDATE xp SET xp = ${xp+ genExp()} WHERE userId = ${msg.author.id}`
+}
+con.query(lol, console.log)
+})
+			
+})
 })
 client.on('message', msg => {
 	if (msg.content === 'm.xp'){
