@@ -6,7 +6,7 @@ const hugs = require('./assets/hugs.json')
 const pokes = require('./assets/pokes.json')
 const colors = require('./assets/colors.json')
 const roulette = require('./assets/roulette.json')
-const sql = require('mysql')
+const mysql = require('mysql')
 const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
 
