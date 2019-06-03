@@ -13,13 +13,14 @@ let randomxp = Math.floor(Math.random() * 30) + 1;
 	const gId = msg.guild.id
 	const aId = msg.author.id
 	var profile = await dl.AddXp(aId, randomxp)
-	var xp = profile.xp
-	var level = profile.level
+	var xp = await profile.xp
+	var level = await profile.level
 	var randcol = Object.values(colors)
+	console.log(`${msg.author.username} | ${xp}`)
 	var color = randcol[parseInt(Math.random() * randcol.length)]
 	let levelUp = 5 * (level ** 2) + 50 * level +100;
 	if (xp  >= levelUp) {
-		dl.AddLevel(msg.author.id, 1)
+		await dl.AddLevel(msg.author.id, 1)
 		let embed = new Discord.RichEmbed()
 		.setColor(color)
 		.setTitle(`${msg.author.username}'s Profile`)
