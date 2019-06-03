@@ -12,8 +12,9 @@ client.on('message', async (msg)=>{
 let randomxp = Math.floor(Math.random() * 30) + 1;
 	const gId = msg.guild.id
 	const aId = msg.author.id
-	var profile = await dl.AddXp(aId, randomxp)
-	var xp = await profile.xp
+	var addxp = await dl.AddXp(aId, randomxp)
+	var xp = await addxp.newxp
+	let profile = dl.Fetch(aId)
 	var level = await profile.level
 	var randcol = Object.values(colors)
 	console.log(`${msg.author.username} | ${xp}`)
