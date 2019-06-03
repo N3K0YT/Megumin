@@ -17,7 +17,6 @@ let randomxp = Math.floor(Math.random() * 30) + 1;
 	let profile = dl.Fetch(aId)
 	var level = await profile.level
 	var randcol = Object.values(colors)
-	console.log(`${msg.author.username} | ${xp}`)
 	var color = randcol[parseInt(Math.random() * randcol.length)]
 	let levelUp = 5 * (level ** 2) + 50 * level +100;
 	if (xp  >= levelUp) {
