@@ -13,9 +13,7 @@ let randomxp = Math.floor(Math.random() * 30) + 1;
 	const gId = msg.guild.id
 	const aId = msg.author.id
 	const hasxp = await dl.Fetch(aId)
-	if (!hasxp.xp) {
-	var addxp = await dl.AddXp(aId, randomxp)
-}
+	var addxp = await dl.SetXp(aId, hasxp.xp + randomxp)
 	var xp = await addxp.newxp
 	let profile = dl.Fetch(aId)
 	var level = await profile.level
