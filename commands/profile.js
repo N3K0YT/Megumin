@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const eco = require('discord-economy')
 const dl = require('discord-leveling')
+const colors = require('../assets/colors.json')
 exports.run = async (client, msg, colors) => {
 	const user = msg.mentions.users.first() || msg.author
 	mprofile =await eco.FetchBalance(user.id)
