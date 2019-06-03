@@ -7,7 +7,7 @@ const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
 //  IGNORE BOTS
 client.on('message', async (msg)=>{
-	if (msg.author.bot)return msg.channel.send("You's a bot my nigga")
+	if (msg.author.bot)return 
 	// XP SYSTEM
 let randomxp = Math.floor(Math.random() * 30) + 1;
 	const gId = msg.guild.id
