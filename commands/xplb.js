@@ -1,11 +1,11 @@
 const Discord = require(discord.js)
 const dl = require('dscord-leveling')
 exports.run = (client, msg, args) => {
-if (message.mentions.users.first()) {
+if (msg.mentions.users.first()) {
 var output = await dl.Leaderboard({
-        search: message.mentions.users.first().id
+        search: msg.mentions.users.first().id
       })
-      message.channel.send(`***${message.mentions.users.first().tag}*** is number **${output.placement}** on my leaderboard!`);
+      msg.channel.send(`***${msg.mentions.users.first().tag}*** is number **${output.placement}** on my leaderboard!`);
       //Searches for the top 3 and outputs it to the user.
     } else {
       dl.Leaderboard({

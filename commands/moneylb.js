@@ -1,12 +1,12 @@
 const eco = require('discord-economy')
 const Discord = require('discord.js') 
 exports.run = async (client, msg) => {
-if (message.mentions.users.first()) {
+if (msg.mentions.users.first()) {
 	var output = await eco.Leaderboard({
         filter: x => x.balance > 50,
-        search: message.mentions.users.first().id
+        search: msg.mentions.users.first().id
       })
-      message.channel.send(`${message.mentions.users.first().tag} is number ${output} on my leaderboard!`);
+      msg.channel.send(`${msg.mentions.users.first().tag} is number ${output} on my leaderboard!`);
     } else {
       eco.Leaderboard({
         limit: 3, //Only takes top 3 ( Totally Optional )
