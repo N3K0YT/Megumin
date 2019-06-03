@@ -1,4 +1,5 @@
-exports.run = (client, msg, args, owner, cmd) => {
+const owner = '383749208575967244'
+exports.run = (client, msg, args) => {
 	if (msg.author.id !== owner) return msg.channel.send("You're not my owner")
 	if (!args[0]) return msg.channel.send('Specify a command to reload')
 	try{
