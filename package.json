@@ -8,7 +8,12 @@
     "discord.js": "^11.5.0",
     "emoji-regex": "^8.0.0",
     "kitsu": "^7.0.3",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "chance": "^1.0.18",
+    "imdb-api": "^4.0.2",
+    "discord-leveling": "^1.0.3",
+    "discord-economy": "^1.1.6"
+    
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
