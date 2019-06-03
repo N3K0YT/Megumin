@@ -51,4 +51,4 @@ client.on('message', async (msg) => {
 	
 })
 // LOGIN
-client.login('NTgzMzI2ODU3NDQ1NzY5MjI3.XO6vlQ.jmHvFjcu_ISZPZdQPHZoAoTwEPM')
+client.login(process.env.token)
