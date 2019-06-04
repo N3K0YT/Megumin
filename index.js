@@ -1,30 +1,21 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const embed = new Discord.RichEmbed()
-const dl = require('discord-leveling')
 const prefix = 'm.'
+const didDaily = new Set();
+const mysql = require('mysql')
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
-//  IGNORE BOTS
+
 client.on('guildMemberAdd', member => {
 	con.query(`INSERT INTO xplist (userId, xp) VALUES (${member.id}, 0)`, function (err) => {
 		if (err) throw err
 		console.log(`Successfully added ${member.username} to database`)
 })
 client.on('message', msg =>{
+	// IGNORE BOTS
 	if (msg.author.bot)return 
-	// XP SYSTEM
-	
-let randomxp = Math.floor(Math.random() * 30) + 1;
-	const gId = msg.guild.id
-	const aId = msg.author.id
-	con.query(`SELECT * FROM xplist WHERE userId = ${aId}`)
-	var randcol = Object.values(colors)
-	var color = randcol[parseInt(Math.random() * randcol.length)]
-})
-		
 		// IGNORE DM'S AND MESSAGES WITHOUT PREFIX
-	if (msg.channel.type === 'dm') return
 	if(!msg.content.startsWith(prefix))return;
 	// CMD HANDLER
 	let args = msg.content.slice(prefix.length).trim().split(' ');
@@ -32,7 +23,7 @@ let randomxp = Math.floor(Math.random() * 30) + 1;
 	if(!msg.content.startsWith(prefix))return;
 	try {
 		let commandFile = require(`./commands/${cmd}.js`);
-		commandFile.run(client, msg, args, colors, owner, cmd, xp, level)
+		commandFile.run(client, msg, args, colors, owner, con, cmd)
 } catch {return};
 })
 // ALERT WHEN READY AND CHANGE ACTIVITY
@@ -63,7 +54,7 @@ client.on('message', async (msg) => {
 		con.query(`INSERT INTO xplist (userId, xp) VALUES ('${msg.author.id}', randomxp )`)
 })
 }
-con.query(`UPDATE xplist SET xp = ${results[0].xp} =+ ${randomxp}`)
+con.query(`UPDATE xplist SET xp = ${results[0].xp} + ${randomxp} WHERE userId = ${msg.author.id}`)
 })
 // LOGIN
 client.login(process.env.token)
