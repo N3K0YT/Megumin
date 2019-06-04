@@ -6,30 +6,22 @@ const prefix = 'm.'
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
 //  IGNORE BOTS
-client.on('message', async (msg)=>{
+client.on('guildMemberAdd', member => {
+	con.query(`INSERT INTO xplist (userId, xp) VALUES (${member.id}, 0)`, function (err) => {
+		if (err) throw err
+		console.log(`Successfully added ${member.username} to database`)
+})
+client.on('message', msg =>{
 	if (msg.author.bot)return 
 	// XP SYSTEM
+	
 let randomxp = Math.floor(Math.random() * 30) + 1;
 	const gId = msg.guild.id
 	const aId = msg.author.id
-	const hasxp = await dl.Fetch(aId)
-	var addxp = await dl.SetXp(aId, hasxp.xp + randomxp)
-	var xp = await addxp.newxp
-	let profile = dl.Fetch(aId)
-	var level = await profile.level
+	con.query(`SELECT * FROM xplist WHERE userId = ${aId}`)
 	var randcol = Object.values(colors)
 	var color = randcol[parseInt(Math.random() * randcol.length)]
-	let levelUp = 5 * (level ** 2) + 50 * level +100;
-	if (xp  >= levelUp) {
-		await dl.AddLevel(msg.author.id, 1)
-		let embed = new Discord.RichEmbed()
-		.setColor(color)
-		.setTitle(`${msg.author.username}'s Profile`)
-		.setThumbnail(msg.author.avatarURL)
-		.addField('xp', xp, true)
-		.addField('Level', level, true)
-		msg.channel.send(embed)
-		}
+})
 		
 		// IGNORE DM'S AND MESSAGES WITHOUT PREFIX
 	if (msg.channel.type === 'dm') return
@@ -48,9 +40,30 @@ client.on('ready', () => {
 	client.user.setActivity('with explosive magic | m. ')
 	console.log(`Logged in as ${client.user.tag}!`)
 })
+// DB CONNECTION
+con = mysql.createConnection({
+			host: 'remotemysql.com',
+			user: 'mzBFUTIoNt',
+			port:  '3306',
+			password: 'WmmCoYMmQc',
+			database: 'mzBFUTIoNt'
+})
+con.connect( function (err) => {
+	if (err) throw err;
+	console.log('Sucessfully connected to db')
+}
 // XP SYSTEM
 client.on('message', async (msg) => {
-	
+	if (msg.content.startsWith(prefix)) return;
+	if (msg.author.bot) return;
+	let randomxp = Math.floor(Math.random() * 30) + 
+	con.query(`SELECT * FROM xplist WHERE userId = ${msg.author.id}`, (err, results) => {
+		if (err) throw err;
+		if (results[0].length === 0) {
+		con.query(`INSERT INTO xplist (userId, xp) VALUES ('${msg.author.id}', randomxp )`)
+})
+}
+con.query(`UPDATE xplist SET xp = ${results[0].xp} =+ ${randomxp}`)
 })
 // LOGIN
 client.login(process.env.token)
