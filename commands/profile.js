@@ -1,19 +1,22 @@
 const Discord = require('discord.js')
+const xp = require('../assets/db/xp.json')
+const money = require('../assets/db/money.json')
 const colors = require('../assets/colors.json')
-exports.run = async (client, msg, con) => {
+exports.run = (client, msg) => {
 	const user = msg.mentions.users.first() || msg.author
-	mprofile =await eco.FetchBalance(user.id)
-	xprofile = con.query(`SELECT FROM xplist WHERE userId = ${user.id}`)
-	var randcol = Object.values(colors)
-	var color = randcol[parseInt(Math.random() * randcol.length)]
+	const lvl = xp[user.id].level
+	const xpamount = xp[user.id].xp
+	const cashamount = money[user.id].amount
+	const randcol = Object.values(colors)
+	const color = randcol[parseInt(Math.random() * randcol.length)]
 	const embed = new Discord.RichEmbed()
 	.setColor(color)
 	.setTitle(`${user.username}'s profile`)
 	.setThumbnail(user.avatarURL)
-	.addField('Money', mprofile.balance, true)
-	.addField('XP', xprofile.xp, true)
-	//.addField('Level', xprofile.level, true)
-	.setFooter('Megumin', client.user.avatarURL)
+	.addField('Money', cashamount, true)
+	.addField('XP', xpamount, true)
+	.addField('Level', lvl, true)
+	.setFooter('Megumin XP', client.user.avatarURL)
 	msg.channel.send(embed)
 	
 }

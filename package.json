@@ -7,17 +7,13 @@
     "booru": "^2.0.2",
     "chance": "^1.0.18",
     "discord.js": "^11.5.0",
-    "emoji-regex": "^8.0.0",
-    "imdb-api": "^4.0.2",
-    "jimp": "^0.6.4",
-    "kitsu": "^7.0.3"
+    "canvas": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "test": "test.js",
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Aqua_",
   "license": "ISC"

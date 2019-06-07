@@ -1,6 +1,7 @@
 const Chance = require('chance')
 const chance = new Chance()
-const eco = require('discord-economy')
+const fs = require('fs')
+const money = require('../assets/db/money.json')
 const Discord = require('discord.js')
 const colors = require('../assets/colors.json')
 exports.run = (client, msg, args) => {
@@ -12,15 +13,17 @@ const randcol = Object.values(colors)
 		const result =chance.bool()
 		if (result === true){
 			message = 'You survived :D'
-			eco.AddToBalance(msg.author.id, 20)
+			money[msg.author.id].amount += 20
 			msg.channel.send('I added 20 credits to your balance :D')
 }
 		if (result === false){
 			message = `Oof, you've been shot ${nani}`
-			eco.SubstractFromBalance(msg.author.id, 20)
-			console.log(message)
+			money[msg.author.id].amount -= 20
+			msg.channel.send("Today\'s not your lucky day, you\'ve been charged 20 credits")
 }
-		const embed = new Discord.RichEmbed().setColor(color).setTitle(message).addBlankField().setFooter(msg.author.username, msg.author.avatarURL)
-		msg.channel.send(embed)
-		msg.channel.send("Today\'s not your lucky day, you\'ve been charged 20 credits")
+		
+		msg.channel.send(message)
+		fs.writeFile('./assets/db/money.json', JSON.stringify(money), (err) => {
+		if (err) throw err;
+})
 }
