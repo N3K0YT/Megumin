@@ -2,13 +2,15 @@
   "name": "Megumin",
   "version": "1.0.0",
   "description": "A Discord bot",
-  "main": "bot.js",
+  "main": "index.js",
   "dependencies": {
     "booru": "^2.0.2",
     "canvas": "^2.5.0",
     "chance": "^1.0.18",
-    "discord.js": "^11.5.0",
-    "mysql": "^2.17.1"
+    "discord.js": "^11.5.1",
+    "mysql": "^2.17.1",
+    "superagent": "^5.0.5",
+    "express": "^4.16.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

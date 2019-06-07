@@ -4,6 +4,8 @@ const embed = new Discord.RichEmbed()
 const fs = require('fs')
 const mysql = require('mysql')
 //const jimp = require('jimp')
+const express = require('./server.js')
+express.run()
 const prefix = 'm.'
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
@@ -51,4 +53,4 @@ con.connect(err => {
 	//con.query('SHOW TABLES', console.log())
 })
 // LOGIN
-client.login('NTgzMzI2ODU3NDQ1NzY5MjI3.XO6vlQ.jmHvFjcu_ISZPZdQPHZoAoTwEPM')
+client.login(process.env.TOKEN)
