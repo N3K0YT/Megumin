@@ -53,4 +53,5 @@ con.connect(err => {
 	//con.query('SHOW TABLES', console.log())
 })
 // LOGIN
-client.login(process.env.TOKEN)
+client.login(process.env.token)
+
