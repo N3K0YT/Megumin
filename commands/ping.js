@@ -1,3 +1,3 @@
 exports.run = (client, msg, args) => {
-	msg.channel.send(`Pong! ${client.ping}`)
+	msg.channel.send(`Pong! ${Date.now() - msg.createdTimestamp}`)
 }

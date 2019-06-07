@@ -7,7 +7,10 @@ exports.run = (client, msg, args, owner, cmd) => {
 				if (!post.fileUrl) return msg.channel.send(`Couldn't find anything matching tag ***${args[0]}***`);
 				const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-				 embed.setTitle('Result from Safebooru').setColor(color).setImage(post.fileUrl).setFooter('Megumin by Aqua_')
+		const embed = new Discord.RichEmbed()
+				 .setTitle('Result from Safebooru')
+				.setColor(color).setImage(post.fileUrl)
+				.setFooter('Megumin by Aqua_')
 				msg.channel.send(embed)
 }
 })
