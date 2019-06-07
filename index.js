@@ -4,8 +4,6 @@ const embed = new Discord.RichEmbed()
 const fs = require('fs')
 const mysql = require('mysql')
 //const jimp = require('jimp')
-const express = require('./server.js')
-express.run()
 const prefix = 'm.'
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'

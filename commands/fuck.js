@@ -6,11 +6,10 @@ exports.run = (client, msg, args) => {
   if (user.tag === 'Megumin#6443'){
     const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
-		const embed = new Discord.RichEmbed().setTitle('Not with me').setColor(color)
+		let embed = new Discord.RichEmbed().setTitle('Not with me').setColor(color)
 		msg.channel.send(embed)
-    return
 } else {
-	l values = Object.values(fucks)
+	    const values = Object.values(fucks)
 		const fuck = values[parseInt(Math.random() * values.length)]
 		const randcol = Object.values(colors)
 		const color = randcol[parseInt(Math.random() * randcol.length)]
@@ -22,4 +21,4 @@ exports.run = (client, msg, args) => {
 			msg.channel.send(embed)
     }
 }
-}
+}1
