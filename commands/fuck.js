@@ -3,12 +3,6 @@ const fucks = require('../assets/fucks.json')
 const colors = require('../assets/colors.json')
 exports.run = (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.reply('no.')
-  if (user.tag === 'Megumin#6443'){
-    const randcol = Object.values(colors)
-		const color = randcol[parseInt(Math.random() * randcol.length)]
-		let embed = new Discord.RichEmbed().setTitle('Not with me').setColor(color)
-		msg.channel.send(embed)
-} else {
 	    const values = Object.values(fucks)
 		const fuck = values[parseInt(Math.random() * values.length)]
 		const randcol = Object.values(colors)
@@ -21,4 +15,3 @@ exports.run = (client, msg, args) => {
 			msg.channel.send(embed)
     }
 }
-}1
