@@ -10,7 +10,7 @@
     "discord.js": "^11.5.1",
     "mysql": "^2.17.1",
     "superagent": "^5.0.5",
-    "express": "^4.16.4"
+    "jimp": "^0.6.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
