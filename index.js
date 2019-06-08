@@ -8,6 +8,7 @@ const prefix = 'm.'
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
 const addXp = Math.floor(Math.random() * 7) + 8
+console.log("I'm working. :D")
 const con = mysql.createConnection({
 	host: 'remotemysql.com',
 			user: 'mzBFUTIoNt',
