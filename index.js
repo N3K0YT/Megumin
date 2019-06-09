@@ -18,12 +18,14 @@ client.on('message', msg =>{
 	//Check to level up
 	dl.Fetch(msg.author.id).then(yee => {
 		if (yee.level === 0){
-			dl.SetLevel(msg.author.id, 1)
+			dl.SetLevel(msg.author.id, 1).then(lel => {
+				if (lel.xp >= lel.level * 350){
+					dl.AddLevel(msg.author.id, 1)
+						dl.SetXp(msg.author.id, 0)
+							msg.channel.send(`<@${msg.author.id}>, you just leveled up!`)
+				}
+			})
 		}
-		if (yee.xp >= yee.level * 350)
-			dl.AddLevel(msg.author.id, 1)
-			dl.SetXp(msg.author.id, 0)
-		msg.channel.send(`<@${msg.author.id}>, you just leveled up!`)
 	})
 	dl.AddXp(msg.author.id, rXp).then(lol => {
 		console.log(`Added ${rXp} xp to ${msg.author.username}`)
