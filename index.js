@@ -7,7 +7,9 @@ const prefix = 'm.'
 const dl = require('discord-leveling')
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
-console.log("I'm working. :D")
+dl.Fetch(owner).then(aq => {
+	console.log(`XP: ${aq.xp} | Level: ${aq.level}`)
+})
 client.on('guildMemberAdd', member => {
 	
 })
@@ -41,11 +43,10 @@ client.on('message', msg =>{
 		commandFile.run(client, msg, args, colors, owner, cmd, con)
 } catch {return};
 })
-// ALERT WHEN READY AND CHANGE ACTIVITY
+// ALERT WHEN READY AND SET ACTIVITY
 client.on('ready', () => {
 	client.user.setActivity(`with explosive magic in ${client.guilds.size} guilds | m.  `)
 	console.log(`Logged in as ${client.user.tag}!`)
 })
 // LOGIN
 client.login(process.env.token)
-
