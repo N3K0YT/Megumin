@@ -10,13 +10,16 @@ const owner = '383749208575967244'
 const rXp = Math.floor(Math.random() * 7) + 8
 console.log("I'm working. :D")
 client.on('guildMemberAdd', member => {
-		
+	
 })
 client.on('message', msg =>{
 	// IGNORE BOTS
 	if (msg.author.bot)return
 	//Check to level up
 	dl.Fetch(msg.author.id).then(yee => {
+		if (yee.level === 0){
+			dl.SetLevel(msg.author.id, 1)
+		}
 		if (yee.xp >= yee.level * 350)
 			dl.AddLevel(msg.author.id, 1)
 			dl.SetXp(msg.author.id, 0)
