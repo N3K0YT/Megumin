@@ -15,7 +15,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', msg =>{
 	// IGNORE BOTS
 	if (msg.author.bot)return
-	dl.addXp(msg.author.id, rXp).then(lol => {
+	dl.AddXp(msg.author.id, rXp).then(lol => {
 		console.log(`Added ${rXp} xp to ${msg.author.username}`)
 	})
 	if(!msg.content.startsWith(prefix))return;
