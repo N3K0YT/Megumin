@@ -33,12 +33,6 @@ client.on('ready', () => {
 	client.user.setActivity(`with explosive magic in ${client.guilds.size} guilds | m.  `)
 	console.log(`Logged in as ${client.user.tag}!`)
 })
-//CONNECT TO MYSQL DB
-con.connect(err => {
-	if(err) throw err
-	//console.log('Connected to db')
-	//con.query('SHOW TABLES', console.log())
-})
 // LOGIN
 client.login(process.env.token)
 
