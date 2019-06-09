@@ -9,6 +9,12 @@ exports.run = (client, msg, args) => {
 		msg.channel.send(embed)
 }
 if (!user){
+	if (args[0] === 'server' || 'guild') {
+		var randcol = Object.values(colors)
+		var color = randcol[parseInt(Math.random() * randcol.length)]
+		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${msg.guild.name}'s avatar`).setImage(msg.guild.avatarURL)
+		msg.channel.send(embed)
+}
 		var randcol = Object.values(colors)
 		var color = randcol[parseInt(Math.random() * randcol.length)]
 		const embed = new Discord.RichEmbed().setColor(color).setTitle(`${msg.author.username}'s avatar`).setImage(msg.author.avatarURL)
