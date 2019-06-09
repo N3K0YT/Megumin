@@ -15,6 +15,13 @@ client.on('guildMemberAdd', member => {
 client.on('message', msg =>{
 	// IGNORE BOTS
 	if (msg.author.bot)return
+	//Check to level up
+	dl.Fetch(msg.author.id).then(yee => {
+		if (yee.xp >= yee.level * 350)
+			dl.AddLevel(msg.author.id, 1)
+			dl.SetXp(msg.author.id, 0)
+		msg.channel.send(`<@${msg.author.id}>, you just leveled up!`)
+	})
 	dl.AddXp(msg.author.id, rXp).then(lol => {
 		console.log(`Added ${rXp} xp to ${msg.author.username}`)
 	})
