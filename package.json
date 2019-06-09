@@ -10,7 +10,8 @@
     "discord.js": "^11.5.1",
     "mysql": "^2.17.1",
     "superagent": "^5.0.5",
-    "jimp": "^0.6.4"
+    "jimp": "^0.6.4",
+    "discord-leveling": "^1.0.3"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
