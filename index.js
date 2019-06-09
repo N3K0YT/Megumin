@@ -7,12 +7,13 @@ const prefix = 'm.'
 const dl = require('discord-leveling')
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
-const rXp = Math.floor(Math.random() * 7) + 8
 console.log("I'm working. :D")
 client.on('guildMemberAdd', member => {
 	
 })
 client.on('message', msg =>{
+	const rXp = Math.floor(Math.random() * 7) + 8
+
 	// IGNORE BOTS
 	if (msg.author.bot)return
 	//Check to level up

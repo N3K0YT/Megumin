@@ -13,5 +13,6 @@ exports.run = (client, msg) => {
 		.addField('Level', res.level, true)
 		.setThumbnail(user.avatarURL)
 		.setFooter('Megumin', client.user.avatarURL)
+	msg.channel.send(embed)
 	})
 }
