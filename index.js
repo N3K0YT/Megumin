@@ -2,37 +2,23 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const embed = new Discord.RichEmbed()
 const fs = require('fs')
+const lvl = require('./leveling.js')
 //const jimp = require('jimp')
 const prefix = 'm.'
 const dl = require('discord-leveling')
 const colors = require('./assets/colors.json')
 const owner = '383749208575967244'
-dl.Fetch(owner).then(aq => {
-	console.log(`XP: ${aq.xp} | Level: ${aq.level}`)
-})
+
 client.on('guildMemberAdd', member => {
 	
 })
 client.on('message', msg =>{
-	const rXp = Math.floor(Math.random() * 7) + 8
-
+	const rXp = Math.floor(Math.random() * 7) + 8;
+	// IGNORE DM'S
+	if(!msg.guild) return 
 	// IGNORE BOTS
 	if (msg.author.bot)return
-	//Check to level up
-	dl.Fetch(msg.author.id).then(yee => {
-		if (yee.level === 0){
-			dl.SetLevel(msg.author.id, 1).then(lel => {
-				if (lel.xp >= lel.level * 350){
-					dl.AddLevel(msg.author.id, 1)
-						dl.SetXp(msg.author.id, 0)
-							msg.channel.send(`<@${msg.author.id}>, you just leveled up!`)
-				}
-			})
-		}
-	})
-	dl.AddXp(msg.author.id, rXp).then(lol => {
-		console.log(`Added ${rXp} xp to ${msg.author.username}`)
-	})
+	lvl.run(client, msg)
 	if(!msg.content.startsWith(prefix))return;
 	// CMD HANDLER
 	let args = msg.content.slice(prefix.length).trim().split(' ');
