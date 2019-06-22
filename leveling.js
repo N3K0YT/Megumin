@@ -1,5 +1,8 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
 const Enmap = require("enmap");
 client.leveling = new Enmap({name: "leveling"});
+
 exports.run = (client, msg) => {
 	const aId = msg.author.id;
 	const gId = msg.author.id;
@@ -13,7 +16,6 @@ exports.run = (client, msg) => {
     client.points.inc(key, "leveling");
 	const curLevel = Math.floor(0.1 * Math.sqrt(client.leveling.get(key, "leveling")));
 	if (client.leveling.get(key, "level") < curLevel) {
-  message.channel.send(`${msg.author.username}, you\'ve leveled up to level ***${curLevel}***! Ain\'t that dandy?`);
+  message.channel.send(`${msg.author.username}, you\'ve leveled up to level ***${curLevel}***!`);
 }
-	
 }
